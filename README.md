@@ -2,6 +2,8 @@
 
 A browser preview of the EchoGPT workspace. It covers chat, model comparison, image and video studios, tasks, connectors, and account pages. Replies and generated media are produced in the browser. Nothing is sent to a model provider.
 
+## Live Site : https://funny-quokka-90e0db.netlify.app/
+
 ## Project overview
 
 The home screen is a light workspace: a top bar, a sidebar, and a composer. From there you can start a chat, compare models, open the image studio, or run a workflow. On a small screen the logo stays on the left and the menu button moves to the right. The New workspace button is hidden until the sidebar is available.
