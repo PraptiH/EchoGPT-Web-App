@@ -1,26 +1,103 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+:root,
+[data-theme="light"] {
+  --bg: #f5f4f8;
+  --elev: #ffffff;
+  --soft: #f0eef5;
+  --sidebar: #eceaf2;
+  --fg: #1c1b22;
+  --muted: #6f6a7a;
+  --border: #e6e3ee;
+  --primary: #6d4dff;
+  --primary-hover: #5b3cf0;
+  --ring: #6d4dff;
+  --danger: #e11d48;
+  --success: #16a34a;
+  --shadow: 0 10px 30px rgba(48, 36, 84, 0.06);
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --bg: #0c0b10;
+  --elev: #16141e;
+  --soft: #221f2b;
+  --sidebar: #12111a;
+  --fg: #f6f3fb;
+  --muted: #c8c2d4;
+  --border: #3a3448;
+  --primary: #7c5cff;
+  --primary-hover: #6d4dff;
+  --ring: #c4b5fd;
+  --danger: #fb7185;
+  --success: #34d399;
+  --shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+  color-scheme: dark;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-bg: var(--bg);
+  --color-elev: var(--elev);
+  --color-soft: var(--soft);
+  --color-sidebar: var(--sidebar);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-line: var(--border);
+  --color-primary: var(--primary);
+  --color-danger: var(--danger);
+  --color-success: var(--success);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --color-ink: #1c1b22;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html,
+body {
+  height: 100%;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans), "Segoe UI", sans-serif;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--primary) 35%, transparent);
+}
+
+:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -3rem;
+  z-index: 80;
+  border-radius: 0.75rem;
+  background: var(--primary);
+  color: white;
+  padding: 0.6rem 1rem;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+.thin-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
